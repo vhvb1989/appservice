@@ -3,7 +3,6 @@ param location string = resourceGroup().location
 param tags object = {}
 param serviceName string = 'web'
 param appCommandLine string = './entrypoint.sh -o ./env-config.js && pm2 serve /home/site/wwwroot --no-daemon --spa'
-param applicationInsightsName string = ''
 param appServicePlanId string
 
 module web '../core/host/appservice.bicep' = {
@@ -12,7 +11,6 @@ module web '../core/host/appservice.bicep' = {
     name: name
     location: location
     appCommandLine: appCommandLine
-    applicationInsightsName: applicationInsightsName
     appServicePlanId: appServicePlanId
     runtimeName: 'node'
     runtimeVersion: '18-lts'
